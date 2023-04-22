@@ -1,0 +1,139 @@
+[
+{
+  "model": "webapp.photo",
+  "pk": 4,
+  "fields": {
+    "photo": "photos/sunset_UoIuQyk.jpg",
+    "signature": "Закат",
+    "author": 1,
+    "created_at": "2023-04-22T08:01:56.984Z",
+    "updated_at": "2023-04-22T08:01:56.984Z",
+    "is_deleted": false,
+    "deleted_at": null
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 5,
+  "fields": {
+    "photo": "photos/sunset_canary_islands.jpg",
+    "signature": "Закат на острове",
+    "author": 2,
+    "created_at": "2023-04-22T10:36:58.988Z",
+    "updated_at": "2023-04-22T10:36:58.988Z",
+    "is_deleted": false,
+    "deleted_at": null
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 6,
+  "fields": {
+    "photo": "photos/searching_for_something.jpg",
+    "signature": "В поисках...",
+    "author": 2,
+    "created_at": "2023-04-22T10:37:34.764Z",
+    "updated_at": "2023-04-22T11:21:08.514Z",
+    "is_deleted": false,
+    "deleted_at": null
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 7,
+  "fields": {
+    "photo": "photos/bicycle_journey.jpg",
+    "signature": "Велопутешествие",
+    "author": 3,
+    "created_at": "2023-04-22T10:38:56.421Z",
+    "updated_at": "2023-04-22T10:38:56.421Z",
+    "is_deleted": false,
+    "deleted_at": null
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 8,
+  "fields": {
+    "photo": "photos/armenia_syunik.jpg",
+    "signature": "Туман в Армении",
+    "author": 4,
+    "created_at": "2023-04-22T10:40:01.626Z",
+    "updated_at": "2023-04-22T10:43:36.287Z",
+    "is_deleted": false,
+    "deleted_at": null
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$v8CUcwKTFDwy2I3RpSmECi$jJLtinM0Y/W/g3XqWoUPeCKu86/qVYoQlxSzoZM6bsk=",
+    "last_login": "2023-04-22T11:49:19.704Z",
+    "is_superuser": true,
+    "username": "root",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-04-22T07:38:54.487Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$XG27CMzzdDs64Qg8zoAroq$tzYQkAt7annrHYvkd76J7XvUaP8HI+lk26gG8Hg0xLM=",
+    "last_login": "2023-04-22T11:55:13.401Z",
+    "is_superuser": false,
+    "username": "johndoe",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-04-22T10:30:04.580Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$Jg0Pkb94HRifrxj0VthNom$vj+wNdY/aiTQyEKGDGac6toFRNsbLb/IGbDi4yT7ft8=",
+    "last_login": "2023-04-22T10:38:14.539Z",
+    "is_superuser": false,
+    "username": "janedoe",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-04-22T10:38:04.147Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$f0GSiWcwV5SyuOBh0GYgS6$gPg6xxJ1YqXV+G099fckAVcS2mScm/VFfpUCKvRRscM=",
+    "last_login": "2023-04-22T10:39:44.956Z",
+    "is_superuser": false,
+    "username": "jackdoe",
+    "first_name": "Jack",
+    "last_name": "Doe",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-04-22T10:39:30.847Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
