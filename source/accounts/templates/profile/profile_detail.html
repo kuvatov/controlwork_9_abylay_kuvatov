@@ -14,4 +14,17 @@
         <p><b>Имя:</b> {{ user.last_name }}</p>
     </div>
 </div>
+<h5>Избранное:</h5>
+<div class="product_review">
+    {% if user.photos %}
+    {% for photo in user.photos.all %}
+    <a href="{% url 'photo_detail' photo.pk %}">
+        <img src="{{ photo.photo.url }}" alt="{{ photo.signature }}">
+    </a>
+    {% empty %}
+    <h6>Фотографии не добавлены!</h6>
+    {% endfor %}
+    {% endif %}
+</div>
+
 {% endblock %}

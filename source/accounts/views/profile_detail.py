@@ -10,6 +10,5 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.object
-        # reviews = user.comments.all()
-        # context['reviews'] = reviews
+        context['photos'] = user.photos.all()
         return context
