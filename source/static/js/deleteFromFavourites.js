@@ -1,14 +1,14 @@
 $(document).ready(function() {
-    $('.add-to-favourites').click(function() {
+    $('.delete-from-favourites').click(function() {
         let photo = $(this).data('photo-id');
 
         $.ajax({
-            url: '/api/favourite/add/',
-            type: 'POST',
+            url: '/api/favourite/delete/',
+            type: 'DELETE',
             data: {photo: photo},
             success: function(data) {
-                $('.add-to-favourites[data-photo-id=' + photo + ']').hide();
-                $('.delete-from-favourites[data-photo-id=' + photo + ']').show();
+                $('.delete-from-favourites[data-photo-id=' + photo + ']').hide();
+                $('.add-to-favourites[data-photo-id=' + photo + ']').show();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error(errorThrown);

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Photo List{% endblock %}
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {% if photos %}
 <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for photo in photos %}
@@ -18,7 +19,7 @@
                     <p class="card-text">Неизвестный</p>
                     {% endif %}
                     {% if photo in request.user.favourites.all %}
-                    <button class="remove-from-favourites btn btn-outline-secondary" data-photo-id="{{ photo.pk }}">
+                    <button class="delete-from-favourites btn btn-outline-secondary" data-photo-id="{{ photo.pk }}">
                         Удалить из избранного
                     </button>
                     {% else %}
