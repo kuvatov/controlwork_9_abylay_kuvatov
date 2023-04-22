@@ -2,13 +2,32 @@
 {% block title %}Photo List{% endblock %}
 {% block content %}
 {% if photos %}
-{% for photo in photos %}
-<p>{{ photo.photo }}</p>
-<p>{{ photo.signature }}</p>
-<p>{{ photo.author }}</p>
-<p>{{ photo.created_at }}</p>
-{% endfor %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for photo in photos %}
+    <a href="{% url 'photo_detail' photo.pk %}">
+        <div class="col card_link">
+            <div class="card h-100">
+                <img src="{{ photo.photo.url }}" class="card-img-top" alt="{{ photo.signature }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ photo.signature }}</h5>
+                    {% if photo.author.first_name %}
+                    <p class="card-text">
+                        {{ photo.author.first_name }} {{ photo.author.last_name }}
+                    </p>
+                    {% else %}
+                    <p class="card-text">Неизвестный</p>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{ photo.created_at }}</small>
+                </div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
 {% else %}
 <p>Фотографии не добавлены</p>
+<a href="{% url 'photo_create' %}">Добавить фотографию</a>
 {% endif %}
 {% endblock %}

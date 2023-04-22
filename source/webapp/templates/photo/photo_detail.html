@@ -1,8 +1,24 @@
 {% extends 'base.html' %}
 {% block title %}Photo Detail{% endblock %}
 {% block content %}
-<p>{{ photo.photo }}</p>
-<p>{{ photo.signature }}</p>
-<p>{{ photo.author }}</p>
-<p>{{ photo.created_at }}</p>
+<div class="page_action pb-3 mt-3 mb-3">
+    {% if photo.author == request.user or user.is_superuser %}
+    <a href="{% url 'photo_update' photo.pk %}" class="btn btn-outline-dark">Редактировать</a>
+    <a href="{% url 'photo_delete' photo.pk %}" class="btn btn-outline-danger">Удалить</a>
+    {% endif %}
+</div>
+<div class="card mb-3">
+    <img src="{{ photo.photo.url }}" class="card-img-top" alt="{{ photo.signature }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ photo.signature }}</h5>
+        {% if photo.author.first_name %}
+        <p class="card-text">
+            {{ photo.author.first_name }} {{ photo.author.last_name }}
+        </p>
+        {% else %}
+        <p class="card-text">Автор: Неизвестный</p>
+        {% endif %}
+        <p class="card-text"><small class="text-muted">{{ photo.created_at }}</small></p>
+    </div>
+</div>
 {% endblock %}

@@ -2,6 +2,29 @@ body {
     position: relative;
     min-height: 100vh;
 }
+header, .navbar a {
+    color: black;
+}
+header, .navbar a:hover {
+    color: gray;
+}
+.nav-item .nav_username {
+    color: forestgreen;
+}
+.card_link {
+    color: black;
+}
+.card_link:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px gray;
+}
+.row a {
+    text-decoration: none;
+}
+.page_action .btn {
+    width: 200px;
+}
+
 
 
 footer {
