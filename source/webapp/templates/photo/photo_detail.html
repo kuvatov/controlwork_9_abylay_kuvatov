@@ -18,7 +18,16 @@
         {% else %}
         <p class="card-text">Автор: Неизвестный</p>
         {% endif %}
-        <p class="card-text"><small class="text-muted">{{ photo.created_at }}</small></p>
+        {% if photo in request.user.favourites.all %}
+        <button class="delete-from-favourites btn btn-outline-secondary" data-photo-id="{{ photo.pk }}">
+            Удалить из избранного
+        </button>
+        {% else %}
+        <button class="add-to-favourites btn btn-outline-secondary" data-photo-id="{{ photo.pk }}">
+            Добавить в избранное
+        </button>
+        {% endif %}
+        <p class="card-text mt-3"><small class="text-muted">{{ photo.created_at }}</small></p>
     </div>
 </div>
 {% endblock %}

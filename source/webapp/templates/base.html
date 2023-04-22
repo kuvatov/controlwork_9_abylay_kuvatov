@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'media/favicon.ico' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>{% block title %}Document{% endblock %}</title>
     {% load bootstrap5 %}
     {% bootstrap_css %}
@@ -28,12 +29,14 @@
                     <ul class="navbar-nav">
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link active nav_username" aria-current="page" href="{% url 'profile_detail' user.pk %}">
+                            <a class="nav-link active nav_username" aria-current="page"
+                               href="{% url 'profile_detail' user.pk %}">
                                 {{ request.user.username }}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'photo_create' %}">Загрузить фотографию</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'photo_create' %}">Загрузить
+                                фотографию</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">выход</a>
@@ -57,5 +60,8 @@
         {% block content %}{% endblock %}
     </div>
 </div>
+
+<script src="{% static 'js/addToFavourites.js' %}"></script>
+<script src="{% static 'js/deleteFromFavourites.js' %}"></script>
 </body>
 </html>
