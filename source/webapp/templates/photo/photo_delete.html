@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Photo Delete{% endblock %}
+{% block content %}
+<h5>Вы уверены, что хотите удалить фотографию?!</h5>
+<p><b>Фотография:</b> {{ photo.signature }}</p>
+<form method="post">
+    {% include 'partial/form.html' with button_text='Удалить' %}
+</form>
+{% endblock %}

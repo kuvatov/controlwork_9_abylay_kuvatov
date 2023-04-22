@@ -2,6 +2,6 @@
 {% block title %}Photo Update{% endblock %}
 {% block content %}
 <form method="post" enctype="multipart/form-data">
-    {% include 'partial/form.html' %}
+    {% include 'partial/form.html' with button_text='Обновить' %}
 </form>
 {% endblock %}
