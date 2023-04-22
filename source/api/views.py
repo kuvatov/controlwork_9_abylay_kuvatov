@@ -1,39 +1,44 @@
-from rest_framework import generics, status
+from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 
-from api.serializers import PhotoSerializer
+from api.serializers import PhotoSerializer, FavouriteSerializer
 from webapp.models import Photo, Favourite
 
 
-class AddPhotoToFavouriteView(generics.CreateAPIView):
+class PhotoViewSet(viewsets.ModelViewSet):
+    queryset = Photo.objects.filter(is_deleted=False)
     serializer_class = PhotoSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def post(self, request, *args, **kwargs):
-        photo = request.data.get('photo_id')
-        user = request.user
-        if not photo:
-            return Response({'error': 'Фото с таким id не существует'}, status=status.HTTP_400_BAD_REQUEST)
-        try:
-            photo = Photo.objects.get(pk=photo)
-        except Photo.DoesNotExist:
-            return Response({'error': 'Фото не найдено'}, status=status.HTTP_404_NOT_FOUND)
-        if Favourite.objects.filter(user=user, photo=photo).exists():
-            return Response({'error': 'Фото уже добавлено в избранное'}, status=status.HTTP_400_BAD_REQUEST)
-        favourite = Favourite.objects.create(user=user, photo=photo)
-        return Response(PhotoSerializer(favourite.photo).data, status=status.HTTP_201_CREATED)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def perform_update(self, serializer):
+        publication = serializer.instance
+        if publication.user == self.request.user:
+            serializer.save()
+        else:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+
+    def perform_destroy(self, instance):
+        user = self.request.user
+        if instance.user == user:
+            instance.delete()
+        else:
+            return Response(status=status.HTTP_403_FORBIDDEN)
 
 
-class DeletePhotoFromFavouriteView(generics.DestroyAPIView):
-    serializer_class = PhotoSerializer
+class FavouriteViewSet(viewsets.ModelViewSet):
+    queryset = Favourite.objects.all()
+    serializer_class = FavouriteSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-    def delete(self, request, *args, **kwargs):
-        photo = request.data.get('photo_id')
-        user = request.user
-        if not photo:
-            return Response({'error': 'Фото с таким id не существует'}, status=status.HTTP_400_BAD_REQUEST)
-        try:
-            favourite = Favourite.objects.get(user=user, photo__id=photo)
-        except Favourite.DoesNotExist:
-            return Response({'error': 'Не добавлено в избранное'}, status=status.HTTP_404_NOT_FOUND)
-        favourite.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def perform_destroy(self, instance):
+        user = self.request.user
+        if instance.user == user:
+            instance.delete()
+        else:
+            return Response(status=status.HTTP_403_FORBIDDEN)
