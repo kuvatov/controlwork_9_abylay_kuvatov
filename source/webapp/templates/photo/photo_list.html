@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Photo List{% endblock %}
+{% block content %}
+{% if photos %}
+{% for photo in photos %}
+<p>{{ photo.signature }}</p>
+{% endfor %}
+{% else %}
+<p>Фотографии не добавлены</p>
+{% endif %}
+{% endblock %}
