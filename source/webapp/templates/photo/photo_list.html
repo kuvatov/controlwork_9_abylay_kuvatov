@@ -3,7 +3,10 @@
 {% block content %}
 {% if photos %}
 {% for photo in photos %}
+<p>{{ photo.photo }}</p>
 <p>{{ photo.signature }}</p>
+<p>{{ photo.author }}</p>
+<p>{{ photo.created_at }}</p>
 {% endfor %}
 {% else %}
 <p>Фотографии не добавлены</p>
