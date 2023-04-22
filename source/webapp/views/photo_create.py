@@ -14,4 +14,4 @@ class PhotoCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('publication_detail', kwargs={'pk': self.object.pk})
+        return reverse('photo_detail', kwargs={'pk': self.object.pk})
